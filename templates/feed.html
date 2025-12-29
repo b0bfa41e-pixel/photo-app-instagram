@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photo Feed</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="header">
+    Photo Feed | <a href="/upload">Upload</a> | <a href="/logout">Logout</a>
+</div>
+
+<div class="feed-container">
+    {% for p in posts %}
+    <div class="feed-item">
+        <img src="{{ p.image_url }}" alt="Post" onclick="openModal(this.src)">
+        <div class="username">{{ p.user }}</div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Modal -->
+<div id="imgModal" class="modal">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+</div>
+
+<script>
+function openModal(src) {
+    document.getElementById("imgModal").style.display = "flex";
+    document.getElementById("modalImg").src = src;
+}
+
+function closeModal() {
+    document.getElementById("imgModal").style.display = "none";
+}
+</script>
+</body>
+</html>

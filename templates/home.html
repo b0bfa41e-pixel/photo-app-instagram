@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="feed">
+  {% for p in posts %}
+  <div class="post">
+    <img src="{{ p.image_url }}" onclick="openModal(this.src)">
+    <div class="icons">
+      <div>
+        ❤️ <span>0</span>
+        💬
+        🔗
+      </div>
+      <div class="right">🔖</div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

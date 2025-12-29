@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title if title else "PhotoApp" }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="sidebar">
+    <a href="/home">🏠 Home</a>
+    <a href="/upload">➕ Upload</a>
+    <a href="/profile">👤 Profile</a>
+    <a href="/settings">⚙️ Settings</a>
+    <a href="#" onclick="confirmLogout()">🚪 Logout</a>
+</div>
+
+<div class="main">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Image modal -->
+<div id="imgModal" class="modal">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+</div>
+
+<script>
+function openModal(src) {
+    document.getElementById("imgModal").style.display = "flex";
+    document.getElementById("modalImg").src = src;
+}
+function closeModal() {
+    document.getElementById("imgModal").style.display = "none";
+}
+
+function confirmLogout() {
+    if (confirm("Are you sure you want to sign out?")) {
+        window.location.href = "/logout";
+    }
+}
+</script>
+</body>
+</html>
